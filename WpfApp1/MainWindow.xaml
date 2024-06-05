@@ -1,0 +1,72 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Выберите функцию: "/>
+            <ComboBox x:Name="functionComboBox">
+                <ComboBoxItem Content="y = x + 5"/>
+                <ComboBoxItem Content="y = sin x"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="Построить график" Click="CreateGraf"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="Левая граница: "/>
+            <TextBox x:Name="leftBoundaryTextBox" Width="100" PreviewTextInput="NumericTextBoxInput"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <TextBlock Text="Правая граница: "/>
+            <TextBox x:Name="rightBoundaryTextBox" Width="100" PreviewTextInput="NumericTextBoxInput"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <Button Content="Отрисовать границы" Click="DrawBoundaries_Click"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <TextBlock Text="Шаг: "/>
+            <TextBox x:Name="stepTextBox" Width="100" PreviewTextInput="NumericTextBoxInput"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Button Content="Подсчитать корни" Click="CalculateRoots_Click"/>
+
+        </StackPanel>
+        
+        <TextBlock Grid.Row="7" TextWrapping="Wrap" TextAlignment="Center" Margin="5"/>
+
+        <StackPanel Grid.Row="8" Orientation="Horizontal">
+            <TextBlock Text="Информация: "/>
+            <TextBox x:Name="infoTextBox" Width="500" Height="100" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+        </StackPanel>
+            
+        
+        
+        <Grid Grid.Row="9">
+            <oxy:PlotView x:Name="plotView" />
+        </Grid>
+    </Grid>
+</Window>
